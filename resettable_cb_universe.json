@@ -1,0 +1,96 @@
+{
+  "as_of": "2026-02-06",
+  "notes": "Synthetic instruments for risk validation and explainers. Not real securities.",
+  "instruments": [
+    {
+      "id": "JP_BANK_RESET_STEPDOWN",
+      "issuer_type": "japanese_financial_group",
+      "bond_currency": "JPY",
+      "underlying_currency": "JPY",
+      "issue_date": "2024-06-15",
+      "maturity_date": "2031-06-15",
+      "notional": 10000000000,
+      "coupon_rate": 0.005,
+      "coupon_freq": "semiannual",
+      "conversion_price": 1000.0,
+      "conversion_ratio": 100000.0,
+      "call_schedule": [{"date": "2029-06-15", "price_pct": 100.0}],
+      "put_schedule": [{"date": "2027-06-15", "price_pct": 100.0}],
+      "soft_call": {"parity_pct": 130.0, "days": 20, "window_days": 30},
+      "reset": {
+        "type": "monthly_vwap",
+        "reset_dates": "monthly",
+        "reset_lag_days": 2,
+        "reset_ref": "20d_vwap",
+        "reset_to_parity_pct": 90.0,
+        "floor_pct": 70.0,
+        "cap_pct": 110.0
+      }
+    },
+    {
+      "id": "JP_BANK_RESET_ANNUAL_FLOOR",
+      "issuer_type": "japanese_financial_group",
+      "bond_currency": "JPY",
+      "underlying_currency": "JPY",
+      "issue_date": "2023-09-01",
+      "maturity_date": "2029-09-01",
+      "notional": 5000000000,
+      "coupon_rate": 0.0,
+      "coupon_freq": "none",
+      "conversion_price": 2500.0,
+      "conversion_ratio": 40000.0,
+      "call_schedule": [{"date": "2028-09-01", "price_pct": 100.0}],
+      "put_schedule": [],
+      "soft_call": {"parity_pct": 125.0, "days": 20, "window_days": 30},
+      "reset": {
+        "type": "annual_fixed_date",
+        "reset_dates": ["2024-09-01", "2025-09-01", "2026-09-01", "2027-09-01"],
+        "reset_ref": "20d_vwap",
+        "reset_to_parity_pct": 85.0,
+        "floor_pct": 60.0,
+        "cap_pct": 100.0
+      }
+    },
+    {
+      "id": "CROSS_CCY_RESET",
+      "issuer_type": "global_financial",
+      "bond_currency": "USD",
+      "underlying_currency": "JPY",
+      "issue_date": "2025-01-10",
+      "maturity_date": "2030-01-10",
+      "notional": 200000000,
+      "coupon_rate": 0.0125,
+      "coupon_freq": "semiannual",
+      "conversion_price": 1800.0,
+      "conversion_ratio": 55555.5556,
+      "call_schedule": [{"date": "2028-01-10", "price_pct": 100.0}],
+      "put_schedule": [{"date": "2027-01-10", "price_pct": 100.0}],
+      "soft_call": {"parity_pct": 130.0, "days": 20, "window_days": 30},
+      "reset": {
+        "type": "quarterly_vwap",
+        "reset_dates": "quarterly",
+        "reset_ref": "30d_vwap",
+        "reset_to_parity_pct": 90.0,
+        "floor_pct": 70.0,
+        "cap_pct": 120.0
+      },
+      "fx": {"pair": "USDJPY", "fx_spot": 150.0, "fx_vol": 0.12}
+    },
+    {
+      "id": "VANILLA_CB_SOFT_CALL",
+      "issuer_type": "industrial",
+      "bond_currency": "JPY",
+      "underlying_currency": "JPY",
+      "issue_date": "2022-04-01",
+      "maturity_date": "2028-04-01",
+      "notional": 3000000000,
+      "coupon_rate": 0.01,
+      "coupon_freq": "annual",
+      "conversion_price": 3000.0,
+      "conversion_ratio": 33333.3333,
+      "call_schedule": [{"date": "2026-04-01", "price_pct": 100.0}],
+      "put_schedule": [{"date": "2025-04-01", "price_pct": 100.0}],
+      "soft_call": {"parity_pct": 130.0, "days": 20, "window_days": 30}
+    }
+  ]
+}
